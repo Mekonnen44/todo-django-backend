@@ -1,7 +1,7 @@
-from rest_framework.routers import DefaultRouter
-from .views import TodoViewSet
+from django.urls import path
+from .views import TodoListCreateView, TodoDetailView
 
-router = DefaultRouter()
-router.register(r'todos', TodoViewSet)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('todos/', TodoListCreateView.as_view(), name='todo-list-create'),
+    path('todos/<int:pk>/', TodoDetailView.as_view(), name='todo-detail'),
+]
